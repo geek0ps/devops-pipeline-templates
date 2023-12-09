@@ -1,0 +1,24 @@
+on:
+  workflow_dispatch:
+    inputs:
+      key:
+        description: 'Environment Variable Key'
+        required: true
+        default: 'ENTER KEY'
+        type: string
+      value:
+        description: 'Value of Key'
+        required: true
+        type: string
+        default: 'ENTER VALUE'
+ 
+
+jobs:
+  log-the-inputs:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+         echo "Push New Environment variable"
+        env:
+          KEY: ${{ inputs.key }}
+          VALUE: ${{ inputs.value }}
